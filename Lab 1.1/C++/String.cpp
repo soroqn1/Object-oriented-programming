@@ -1,21 +1,28 @@
-#include "String.h"
-#include <algorithm>
-#include <cctype>
+#include "Strings.h"
+#include <cstring>
+#include <iostream>
 
-StringClass::StringClass(const std::string& str) {
-    value = str;
+Strings::Strings(const char* initialValue) {
+    value = new char[strlen(initialValue) + 1];
+    strcpy(value, initialValue);
 }
 
-int StringClass::length() const {
-    return value.length();
+Strings::~Strings() {
+    delete[] value;
 }
 
-void StringClass::replace(char oldChar, char newChar) {
-    oldChar = std::toupper(oldChar);
-    newChar = std::toupper(newChar);
-    std::replace(value.begin(), value.end(), oldChar, newChar);
+int Strings::calculateLength() const {
+    return strlen(value);
 }
 
-std::string StringClass::getValue() const {
+void Strings::replaceChar(char oldChar, char newChar) {
+    for (int i = 0; i < strlen(value); ++i) {
+        if (value[i] == oldChar) {
+            value[i] = newChar;
+        }
+    }
+}
+
+const char* Strings::getStringValue() const {
     return value;
 }

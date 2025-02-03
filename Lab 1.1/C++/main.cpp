@@ -1,23 +1,26 @@
+#include "Strings.h"
 #include <iostream>
-#include "String.h"
 
 int main() {
-    std::string input;
-    std::cout << "Enter a string: ";
-    std::cin >> input;
-
-    StringClass myString(input);
-    std::cout << "Original string: " << myString.getValue() << std::endl;
-    std::cout << "Length: " << myString.length() << std::endl;
-
+    char initialString[100];
     char oldChar, newChar;
-    std::cout << "Enter character to replace: ";
+
+    std::cout << "Enter a string: ";
+    std::cin.getline(initialString, 100);
+
+    Strings myString(initialString);
+
+    std::cout << "String value: " << myString.getStringValue() << std::endl;
+    std::cout << "String length: " << myString.calculateLength() << std::endl;
+
+    std::cout << "Enter the character to replace: ";
     std::cin >> oldChar;
-    std::cout << "Enter new character: ";
+    std::cout << "Enter the new character: ";
     std::cin >> newChar;
 
-    myString.replace(oldChar, newChar);
-    std::cout << "Modified string: " << myString.getValue() << std::endl;
+    myString.replaceChar(oldChar, newChar);
+
+    std::cout << "Modified string value: " << myString.getStringValue() << std::endl;
 
     return 0;
 }

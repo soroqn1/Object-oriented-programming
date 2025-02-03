@@ -1,16 +1,15 @@
-#ifndef STRINGCLASS_H
-#define STRINGCLASS_H
+#ifndef STRINGS_H
+#define STRINGS_H
 
-#include <string>
-
-class StringClass {
+class Strings {
 private:
-    std::string value;
+    char* value;
 public:
-    StringClass(const std::string& str);
-    int length() const;
-    void replace(char oldChar, char newChar);
-    std::string getValue() const;
+    Strings(const char* initialValue);
+    ~Strings();
+    int calculateLength() const;
+    void replaceChar(char oldChar, char newChar);
+    const char* getStringValue() const;
 };
 
-#endif // STRINGCLASS_H
+#endif // STRINGS_H
