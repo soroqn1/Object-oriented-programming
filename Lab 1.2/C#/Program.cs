@@ -1,11 +1,11 @@
 using System;
-using StringLibrary; // Підключаємо бібліотеку
+using StringLibrary; // біб +
 
 class Program
 {
     static void Main()
     {
-        // Використання всіх конструкторів
+        //  конструктори
         StringManipulator str1 = new StringManipulator();
         StringManipulator str2 = new StringManipulator("Hello World");
         StringManipulator str3 = new StringManipulator(str2);
@@ -22,7 +22,6 @@ class Program
     // Деструктор
     ~Program()
     {
-        // Код для виконання при знищенні об'єкта
-        Console.WriteLine("Program object is being destroyed");
+        Console.WriteLine("Знищено успішно!");
     }
 }
