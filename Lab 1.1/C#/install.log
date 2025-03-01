@@ -1,8 +1,0 @@
-[18:04:15 2025-03-01] FETCHING Version 2.39.5
-[18:04:15 2025-03-01] DOWNLOADING https://github.com/spicetify/cli/releases/download/v2.39.5/spicetify-2.39.5-darwin-arm64.tar.gz
-[18:05:19 2025-03-01] EXTRACTING /Users/soroqn/.spicetify/spicetify.tar.gz
-[18:05:19 2025-03-01] SETTING EXECUTABLE PERMISSIONS TO /Users/soroqn/.spicetify/spicetify
-[18:05:20 2025-03-01] REMOVING /Users/soroqn/.spicetify/spicetify.tar.gz
-[18:05:20 2025-03-01] spicetify path already set in /Users/soroqn/.zshrc, continuing...
-[18:05:20 2025-03-01] spicetify v2.39.5 was installed successfully to /Users/soroqn/.spicetify
-[18:05:20 2025-03-01] Run 'spicetify --help' to get started
