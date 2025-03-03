@@ -1,8 +1,10 @@
 ﻿using System;
 using String_manipulator;
 
+namespace Console_application {
+
 public class Program {
-    static void Main()
+    public static void Main(string[] args)
     {
         Console.Write("Type string: ");
         string input = Console.ReadLine() ?? "";
@@ -15,5 +17,12 @@ public class Program {
 
         MainClass transfer = new MainClass();
         transfer.Main(input, oldletter, newletter);
+
+        Console.WriteLine("");
+        Console.WriteLine("Input: " + input);
+        Console.WriteLine("Uppercase: " + input_Uppercase);
+        Console.WriteLine("Length: " + input_Length);
+        Console.WriteLine("Replace: " + input_Replace);
     }
+  }
 }

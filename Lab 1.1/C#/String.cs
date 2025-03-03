@@ -1,15 +1,17 @@
 using System;
+using Console_application;
 
 namespace String_manipulator {
 
 public class MainClass {
     public void Main(string input, string oldletter, string newletter)  
     {
-        Console.WriteLine("");
-        Console.WriteLine("Input: " + input);
-        Console.WriteLine("Uppercase: " + input.ToUpper());
-        Console.WriteLine("Length: " + input.Length);
-        Console.WriteLine("Replace: " + input.Replace(oldletter, newletter));
+        string input_Uppercase = input.ToUpper();
+        int input_Length = input.Length;
+        string input_Replace = input.Replace(oldletter, newletter);
+
+        Program transfer = new Program();
+        transfer.Main(input_Uppercase, input_Length, input_Replace);
     }
   }
 }   
