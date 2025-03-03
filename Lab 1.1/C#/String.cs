@@ -11,7 +11,7 @@ public class MainClass {
         string input_Replace = input.Replace(oldletter, newletter);
 
         Program transfer = new Program();
-        transfer.Main(input_Uppercase, input_Length, input_Replace);
+        transfer.Output(input, input_Length, input_Uppercase, input_Replace);
     }
   }
 }   

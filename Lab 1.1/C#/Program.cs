@@ -6,6 +6,12 @@ namespace Console_application {
 public class Program {
     public static void Main(string[] args)
     {
+        Program program = new Program();
+        program.Input();
+    }
+
+    public void Input()
+    {
         Console.Write("Type string: ");
         string input = Console.ReadLine() ?? "";
         
@@ -17,7 +23,10 @@ public class Program {
 
         MainClass transfer = new MainClass();
         transfer.Main(input, oldletter, newletter);
+    }
 
+    public void Output(string input, int input_Length, string input_Uppercase, string input_Replace)
+    {
         Console.WriteLine("");
         Console.WriteLine("Input: " + input);
         Console.WriteLine("Uppercase: " + input_Uppercase);
