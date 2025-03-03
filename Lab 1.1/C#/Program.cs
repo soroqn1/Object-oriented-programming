@@ -13,7 +13,7 @@ public class Program {
         Console.WriteLine("New symbol to replace:");
         string newletter = Console.ReadLine() ?? "";
 
-        Strings instance = new Strings();
-        instance.Main(input, oldletter, newletter);
+        MainClass transfer = new MainClass();
+        transfer.Main(input, oldletter, newletter);
     }
 }
