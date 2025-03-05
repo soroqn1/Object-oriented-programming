@@ -1,12 +1,13 @@
 #ifndef STRING_H
 #define STRING_H
 
-#include <iostream>
 #include <string>
 
-class MainClass {
+class StringManipulator {
 public:
-    void processString(const std::string& input, const std::string& oldLetter, const std::string& newLetter);
+    std::string toUppercase(std::string input);
+    std::string replaceLetters(std::string input, char oldLetter, char newLetter);
+    size_t getLength(std::string input);
 };
 
 #endif
