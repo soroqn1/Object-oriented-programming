@@ -1,6 +1,16 @@
 #include <algorithm>
 #include "String.h"
 
+StringManipulator::StringManipulator() : input(""), oldLetter('\0'), newLetter('\0') {}
+
+StringManipulator::StringManipulator(std::string input, char oldLetter, char newLetter) 
+    : input(input), oldLetter(oldLetter), newLetter(newLetter) {}
+
+StringManipulator::StringManipulator(const StringManipulator& other) 
+    : input(other.input), oldLetter(other.oldLetter), newLetter(other.newLetter) {}
+
+StringManipulator::~StringManipulator() {}
+
 std::string StringManipulator::toUppercase(std::string input) 
 {
     for (char &c : input) c = std::toupper(c);
