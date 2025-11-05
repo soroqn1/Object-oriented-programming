@@ -1,34 +1,24 @@
-Student ІванПетренко
-{"firstname": "Іван","lastname": "Петренко","course": 4,"studentId": "КБ123456","scholarship": 0.0,"passportSeries": "СН","passportNumber": "123456"};
-Student МаріяКоваленко
-{"firstname": "Марія","lastname": "Коваленко","course": 4,"studentId": "КБ234567","scholarship": 0.0,"passportSeries": "СН","passportNumber": "234567"};
-Student ОлексійСидоренко
-{"firstname": "Олексій","lastname": "Сидоренко","course": 4,"studentId": "КБ345678","scholarship": 0.0,"passportSeries": "СН","passportNumber": "345678"};
-Student АннаШевченко
-{"firstname": "Анна","lastname": "Шевченко","course": 4,"studentId": "КБ456789","scholarship": 2500.0,"passportSeries": "СН","passportNumber": "456789"};
-Student ДмитроМельник
-{"firstname": "Дмитро","lastname": "Мельник","course": 4,"studentId": "КБ567890","scholarship": 3000.0,"passportSeries": "СН","passportNumber": "567890"};
-Student КатеринаБондаренко
-{"firstname": "Катерина","lastname": "Бондаренко","course": 1,"studentId": "КБ111111","scholarship": 1500.0,"passportSeries": "СН","passportNumber": "111111"};
-Student ВікторКравченко
-{"firstname": "Віктор","lastname": "Кравченко","course": 2,"studentId": "КБ222222","scholarship": 0.0,"passportSeries": "СН","passportNumber": "222222"};
-Student ОксанаЛисенко
-{"firstname": "Оксана","lastname": "Лисенко","course": 3,"studentId": "КБ333333","scholarship": 2000.0,"passportSeries": "СН","passportNumber": "333333"};
-Student АндрійГаврилenko
-{"firstname": "Андрій","lastname": "Гаврилenko","course": 5,"studentId": "КБ555555","scholarship": 3500.0,"passportSeries": "СН","passportNumber": "555555"};
-Student ЮліяМорозенко
-{"firstname": "Юлія","lastname": "Морозенко","course": 6,"studentId": "КБ666666","scholarship": 0.0,"passportSeries": "СН","passportNumber": "666666"};
-Postman ВолодимирНечипоренко
-{"firstname": "Володимир","lastname": "Нечипоренко","workDistrict": "Центральний","hasDrivingLicense": true,"employeeId": "POST001"};
-Postman ГалинаТкаченко
-{"firstname": "Галина","lastname": "Ткаченко","workDistrict": "Північний","hasDrivingLicense": false,"employeeId": "POST002"};
-Postman СергійГриценко
-{"firstname": "Сергій","lastname": "Гриценко","workDistrict": "Південний","hasDrivingLicense": true,"employeeId": "POST003"};
-Mountaineer ТарасКарпенко
-{"firstname": "Тарас","lastname": "Карпенко","climbingLevel": "експерт","yearsExperience": 15,"certificationId": "MOUNT001"};
-Mountaineer ОленаВерещак
-{"firstname": "Олена","lastname": "Верещак","climbingLevel": "середній","yearsExperience": 5,"certificationId": "MOUNT002"};
-Mountaineer БогданСтецьків
-{"firstname": "Богдан","lastname": "Стецьків","climbingLevel": "початківець","yearsExperience": 1,"certificationId": "MOUNT003"};
-Mountaineer ІринаГорошко
-{"firstname": "Ірина","lastname": "Горошко","climbingLevel": "просунутий","yearsExperience": 8,"certificationId": "MOUNT004"};
+Student ІванПетров
+{ "firstname": "Іван", "lastname": "Петров", "course": "4", "studentId": "AB123456", "scholarship": "0", "passport": "КН123456" };
+
+Student МаріяКоваль
+{ "firstname": "Марія", "lastname": "Коваль", "course": "3", "studentId": "CD234567", "scholarship": "1500", "passport": "КМ654321" };
+
+Student ОлегСидоренко
+{ "firstname": "Олег", "lastname": "Сидоренко", "course": "4", "studentId": "EF345678", "scholarship": "0", "passport": "КО789012" };
+
+Student АннаМельник
+{ "firstname": "Анна", "lastname": "Мельник", "course": "2", "studentId": "GH456789", "scholarship": "2000", "passport": "КА345678" };
+
+Student ПетроШевченко
+{ "firstname": "Петро", "lastname": "Шевченко", "course": "4", "studentId": "IJ567890", "scholarship": "0", "passport": "КП901234" };
+
+Student ОленаБондар
+{ "firstname": "Олена", "lastname": "Бондар", "course": "4", "studentId": "KL678901", "scholarship": "1800", "passport": "КЕ567890" };
+
+Student ДмитроТкаченко
+{ "firstname": "Дмитро", "lastname": "Ткаченко", "course": "1", "studentId": "MN789012", "scholarship": "0", "passport": "КД234567" };
+
+Student ТетянаСавченко
+{ "firstname": "Тетяна", "lastname": "Савченко", "course": "4", "studentId": "OP890123", "scholarship": "2200", "passport": "КТ112233" };
+
