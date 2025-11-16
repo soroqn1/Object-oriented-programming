@@ -39,12 +39,14 @@ class Postman(Person):
     def draw(self):
         print(f"{self.first_name} {self.last_name} вміє малювати")
 
+
 class Mountaineer(Person):
     def work(self):
         print(f"{self.first_name} {self.last_name} підкорює гори")
     
     def draw(self):
         print(f"{self.first_name} {self.last_name} вміє малювати")
+
 
 class FileManager:
     @staticmethod
