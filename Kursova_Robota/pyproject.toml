@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "task-planner"
+version = "0.1.1"
+description = "Console Task Planner (DAL/BLL/PL layers) for coursework"
+authors = [{name="Student"}]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "typer>=0.12",
+    "rich>=13"
+]
+
+[project.scripts]
+task-planner = "task_planner.pl.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.pytest.ini_options]
+addopts = "-q"
+pythonpath = ["src"]
