@@ -43,7 +43,10 @@ def member_add(ctx: typer.Context,
     rprint({"id": str(m.id), "name": f"{m.first_name} {m.last_name}", "capacity": m.capacity_per_day})
 
 @member_app.command("list")
-def member_list
+def member_list(ctx: typer.Context):
+    c = ctx.obj
+    for m in c.member_service.list():  # type: ignore
+        rprint({"id": str(m.id), "name": f"{m.first_name} {m.last_name}", "email": m.email, "capacity": m.capacity_per_day})
 
 @member_app.command("update")
 @_Err.wrap
@@ -67,11 +70,6 @@ def member_find(ctx: typer.Context, keyword: str):
     res = c.member_service.find_members(keyword)  # type: ignore
     for m in res: rprint({"id": str(m.id), "name": f"{m.first_name} {m.last_name}", "email": m.email})
 
-(ctx: typer.Context):
-    c = ctx.obj
-    for m in c.member_service.list():  # type: ignore
-        rprint({"id": str(m.id), "name": f"{m.first_name} {m.last_name}", "email": m.email, "capacity": m.capacity_per_day})
-
 # ---- Tasks ----
 task_app = typer.Typer(help="Manage tasks")
 app.add_typer(task_app, name="task")
@@ -89,7 +87,11 @@ def task_add(ctx: typer.Context,
     rprint({"id": str(t.id), "title": t.title, "priority": t.priority, "due": t.due_at.isoformat() if t.due_at else None})
 
 @task_app.command("list")
-def task_list
+def task_list(ctx: typer.Context, status: Optional[str] = typer.Option(None, "--status")):
+    c = ctx.obj
+    tasks = c.task_service.get_by_status(status) if status else c.task_service.tasks.get_all()  # type: ignore
+    for t in tasks:
+        rprint({"id": str(t.id), "title": t.title, "status": t.status, "progress": t.progress, "due": t.due_at.isoformat() if t.due_at else None})
 
 @task_app.command("view")
 def task_view(ctx: typer.Context, task_id: str):
@@ -145,12 +147,6 @@ def search_tasks(ctx: typer.Context,
     res = c.task_service.search_tasks_by_status_and_term(status_done=done, term=term)  # type: ignore
     for t in res:
         rprint({"id": str(t.id), "title": t.title, "status": t.status, "due": t.due_at.isoformat() if t.due_at else None})
-
-(ctx: typer.Context, status: Optional[str] = typer.Option(None, "--status")):
-    c = ctx.obj
-    tasks = c.task_service.get_by_status(status) if status else c.task_service.tasks.get_all()  # type: ignore
-    for t in tasks:
-        rprint({"id": str(t.id), "title": t.title, "status": t.status, "progress": t.progress, "due": t.due_at.isoformat() if t.due_at else None})
 
 @task_app.command("assign")
 @_Err.wrap
