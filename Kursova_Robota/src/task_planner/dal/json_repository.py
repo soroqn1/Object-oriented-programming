@@ -55,14 +55,14 @@ class JsonRepository(Generic[T], IRepository[T]):
             row_id_str = row_id.get("v") if isinstance(row_id, dict) and "v" in row_id else str(row_id)
             if row_id_str == id_str:
                 obj = json.loads(json.dumps(row), object_hook=_object_hook)
-                return self.model(**obj)  # type: ignore[arg-type]
+                return self.model(**obj)
         return None
 
     def get_all(self) -> List[T]:
         res: List[T] = []
         for row in self._read():
             obj = json.loads(json.dumps(row), object_hook=_object_hook)
-            res.append(self.model(**obj))  # type: ignore[arg-type]
+            res.append(self.model(**obj))
         return res
 
     def update(self, entity: T) -> None:
