@@ -24,6 +24,39 @@ class MemberService:
     def list(self) -> list[Member]:
         return self.members.get_all()
 
+    def update_member(self, member_id: UUID, *, first_name: str | None = None, last_name: str | None = None,
+                      email: str | None = None, capacity: float | None = None) -> Member:
+        m = self.members.get(member_id)
+        if not m:
+            raise EntityNotFoundException("Member not found")
+        if first_name is not None:
+            if not first_name.strip(): raise DomainValidationException("first_name empty")
+            m.first_name = first_name.strip()
+        if last_name is not None:
+            if not last_name.strip(): raise DomainValidationException("last_name empty")
+            m.last_name = last_name.strip()
+        if email is not None:
+            m.email = email.strip() or None
+        if capacity is not None:
+            if capacity <= 0: raise DomainValidationException("Capacity must be positive")
+            m.capacity_per_day = capacity
+        self.members.update(m)
+        return m
+
+    def delete_member(self, member_id: UUID) -> None:
+        if not self.members.get(member_id):
+            raise EntityNotFoundException("Member not found")
+        # also remove assignments for this member
+        for a in list(self.assignments.get_all()):
+            if a.member_id == member_id:
+                self.assignments.delete(a.id)
+        self.members.delete(member_id)
+
+    def find_members(self, keyword: str) -> list[Member]:
+        kw = keyword.lower().strip()
+        return self.members.find(lambda m: kw in m.first_name.lower() or kw in m.last_name.lower() or (m.email and kw in m.email.lower()))
+
+
 class TaskService:
     def __init__(self, tasks: IRepository[TaskItem], members: IRepository[Member], assignments: IRepository[Assignment]):
         self.tasks = tasks
@@ -102,40 +135,6 @@ class ReportingService:
             key = f"{m.first_name} {m.last_name}" if m else "Unknown"
             loads[key] = loads.get(key, 0.0) + a.allocated_hours
         return ProjectState(total=total, done=done, active=active, overdue=overdue, by_member_load=loads)
-
-
-# ---- Member CRUD+Search ----
-def update_member(self, member_id: UUID, *, first_name: str | None = None, last_name: str | None = None,
-                  email: str | None = None, capacity: float | None = None) -> Member:
-    m = self.members.get(member_id)
-    if not m:
-        raise EntityNotFoundException("Member not found")
-    if first_name is not None:
-        if not first_name.strip(): raise DomainValidationException("first_name empty")
-        m.first_name = first_name.strip()
-    if last_name is not None:
-        if not last_name.strip(): raise DomainValidationException("last_name empty")
-        m.last_name = last_name.strip()
-    if email is not None:
-        m.email = email.strip() or None
-    if capacity is not None:
-        if capacity <= 0: raise DomainValidationException("Capacity must be positive")
-        m.capacity_per_day = capacity
-    self.members.update(m)
-    return m
-
-def delete_member(self, member_id: UUID) -> None:
-    if not self.members.get(member_id):
-        raise EntityNotFoundException("Member not found")
-    # also remove assignments for this member
-    for a in list(self.assignments.get_all()):
-        if a.member_id == member_id:
-            self.assignments.delete(a.id)
-    self.members.delete(member_id)
-
-def find_members(self, keyword: str) -> list[Member]:
-    kw = keyword.lower().strip()
-    return self.members.find(lambda m: kw in m.first_name.lower() or kw in m.last_name.lower() or (m.email and kw in m.email.lower()))
 
 
 class _SortKey:

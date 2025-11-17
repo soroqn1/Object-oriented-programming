@@ -1,0 +1,59 @@
+# 1. Запуск програми (перевірка що працює)
+task-planner --help
+
+# 2. Створення учасників
+task-planner member add "Іван" "Петренко" --email ivan@test.com --capacity 8.0
+task-planner member add "Марія" "Коваленко" --email maria@test.com --capacity 6.0
+task-planner member add "Петро" "Сидоренко" --email petro@test.com --capacity 7.5
+
+# Переглянути всіх учасників
+task-planner member list
+
+# 3. Створення задач
+task-planner task add "Розробити UML діаграми" --prio High --due 2025-12-20 --desc "Класові та послідовності"
+task-planner task add "Написати код" --prio Medium --due 2025-12-25 --desc "Реалізація BLL/DAL"
+task-planner task add "Тестування" --prio Critical --due 2025-12-15 --desc "Unit тести"
+
+# Переглянути всі задачі
+task-planner task list
+
+# 4. Призначення задачі на учасника (потрібні ID з попередніх команд)
+# Спочатку подивіться ID:
+task-planner member list
+task-planner task list
+
+# Призначте (замініть <task_id> і <member_id> на реальні):
+task-planner task assign <task_id> <member_id> 5.0
+
+# 5. Зміна статусу / прогресу
+task-planner task set-status <task_id> InProgress
+task-planner task set-progress <task_id> 50
+
+# 6. Пошук / фільтри
+# Пошук учасника за ключовим словом
+task-planner member find "Іван"
+
+# Фільтр задач за статусом
+task-planner task list2 --status InProgress
+
+# Сортування за пріоритетом
+task-planner task list2 --sort-by priority
+
+# 7. Прострочені задачі
+task-planner task list2 --overdue
+
+# 8. Звіт про стан проекту
+task-planner report
+
+# 9. Тести на помилки/валідацію
+# Спроба додати задачу з минулою датою (має видати помилку)
+task-planner task add "Test" --prio High --due 2020-01-01
+
+# Спроба додати учасника з негативною capacity (помилка)
+task-planner member add "Test" "User" --capacity -5
+
+# 10. Структура проекту - подивитися файли даних
+ls -la data/
+cat data/member.json
+cat data/taskitem.json
+cat data/assignment.json

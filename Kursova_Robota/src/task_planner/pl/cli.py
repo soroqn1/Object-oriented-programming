@@ -5,6 +5,7 @@ from typing import Optional
 from datetime import datetime
 from uuid import UUID
 from rich import print as rprint
+from functools import wraps
 
 from ..ioc import build_container
 from ..bll.models import TaskStatus, Priority
@@ -15,6 +16,7 @@ app = typer.Typer(help="Task Planner (Python) — DAL/BLL/PL coursework")
 class _Err:
     @staticmethod
     def wrap(fn):
+        @wraps(fn)
         def _w(*args, **kwargs):
             try:
                 return fn(*args, **kwargs)
@@ -36,8 +38,8 @@ app.add_typer(member_app, name="member")
 def member_add(ctx: typer.Context,
                first_name: str,
                last_name: str,
-               email: Optional[str] = None,
-               capacity: Optional[float] = typer.Option(None, help="Capacity per day (hours)")):
+               email: Optional[str] = typer.Option(None, "--email", help="Email address"),
+               capacity: Optional[float] = typer.Option(None, "--capacity", help="Capacity per day (hours)")):
     c = ctx.obj
     m = c.member_service.add(first_name, last_name, email, capacity)  
     rprint({"id": str(m.id), "name": f"{m.first_name} {m.last_name}", "capacity": m.capacity_per_day})
