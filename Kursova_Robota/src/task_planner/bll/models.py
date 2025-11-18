@@ -1,9 +1,9 @@
-
 from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Optional
 from uuid import uuid4, UUID
 from datetime import datetime
+
 
 class Priority:
     Low = "Low"
@@ -11,6 +11,7 @@ class Priority:
     High = "High"
     Critical = "Critical"
     choices = {Low, Medium, High, Critical}
+
 
 class TaskStatus:
     Todo = "Todo"
@@ -20,6 +21,7 @@ class TaskStatus:
     Overdue = "Overdue"
     choices = {Todo, InProgress, Done, Canceled, Overdue}
 
+
 @dataclass
 class Member:
     first_name: str
@@ -27,6 +29,7 @@ class Member:
     email: Optional[str] = None
     capacity_per_day: Optional[float] = None
     id: UUID = field(default_factory=uuid4)
+
 
 @dataclass
 class TaskItem:
@@ -39,12 +42,14 @@ class TaskItem:
     due_at: Optional[datetime] = None
     id: UUID = field(default_factory=uuid4)
 
+
 @dataclass
 class Assignment:
     task_id: UUID
     member_id: UUID
     allocated_hours: float
     id: UUID = field(default_factory=uuid4)
+
 
 @dataclass
 class ProjectState:
